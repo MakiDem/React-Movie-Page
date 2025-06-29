@@ -3,14 +3,21 @@ import Favorites from "./pages/Favorites.jsx";
 import "./App.css";
 import MovieCard from "./components/MovieCard";
 import {Routes, Route} from 'react-router-dom'
+import NavBar from "./components/NavBar.jsx"
 
 
 function App() {
   return (
-      <Routes>
-        <Route path='/' element={ <Home/> }></Route>
-        <Route path='/favorites' element={ <Favorites />}></Route>
-      </Routes>
+    <div>
+      <NavBar/>
+
+      <main>
+        <Routes>
+          <Route path='/' element={ <Home/> }></Route>
+          <Route path='/favorites' element={ <Favorites />}></Route>
+        </Routes>
+      </main>
+    </div>
   );
 }
 
