@@ -20,11 +20,13 @@ function Home() {
         const popularMovies = await getPopularMovies()
         setMovies(popularMovies)
       } catch(err) {
-
+        setError(err)
       } finally {
-
+        setLoading(false)
       }
     }
+
+    loadPopularMovies()
   }, [movies])
 
   return (
@@ -36,11 +38,23 @@ function Home() {
         <button type="submit">Search</button>
       </form>
 
-      <div className = 'movies-grid'>
-        {movies.map(movie => (
-          <MovieCard movie = {movie} key={movie.id}/>
-        ))}
+      {error ? (
+        <div>
+          {`Error: ${error}. Please try again later.`}
+        </div>
+      ): (
+        <div className = 'movies-grid'>
+        {loading ? (
+          <div>Loading...</div>
+        ) : (
+          <div className="movies-grid">
+            {movies.map(movie => (
+              <MovieCard movie = {movie} key={movie.id}/>
+            ))}
+          </div>
+        )}
       </div>
+      )}
     </div>
   )
 }
