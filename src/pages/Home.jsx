@@ -1,7 +1,7 @@
 import MovieCard from "../components/MovieCard.jsx"
 import {useState, useEffect} from "react"
 import '../css/Home.css'
-import { getPopularMovies } from "../services/api.js"
+import { getPopularMovies, searchMovies } from "../services/api.js"
 
 function Home() {
   const [searchQuery, setSearchQuery] = useState("")
@@ -9,9 +9,25 @@ function Home() {
   const [error, setError] = useState(null)
   const [loading, setLoading] = useState(true)
 
-  const handleSearch = (e) => {
+  const handleSearch = async (e) => {
     e.preventDefault()
-    alert("Searching movie...")
+
+    if (!searchQuery.trim()) return
+    if (loading) return
+
+    setLoading(true)
+
+    try {
+      const results = await searchMovies(searchQuery)
+      setMovies(results)
+      setError(null)
+    } catch (err) {
+      setError(err)
+    } finally {
+      setLoading(false)
+    }
+
+    
   }
 
   useEffect(() => {
