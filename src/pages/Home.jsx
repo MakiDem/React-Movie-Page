@@ -26,8 +26,6 @@ function Home() {
     } finally {
       setLoading(false)
     }
-
-    
   }
 
   useEffect(() => {
@@ -43,7 +41,7 @@ function Home() {
     }
 
     loadPopularMovies()
-  }, [movies])
+  }, [])
 
   return (
     <div className = "home">
