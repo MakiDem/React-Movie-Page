@@ -9,7 +9,7 @@ import { MovieProvider } from "./context/movieContext.jsx";
 function App() {
   return (
     <MovieProvider>
-      <div>
+      
         <NavBar/>
         <main>
           <Routes>
@@ -17,7 +17,7 @@ function App() {
             <Route path='/favorites' element={ <Favorites />}></Route>
           </Routes>
         </main>
-      </div>
+      
     </MovieProvider>
   );
 }

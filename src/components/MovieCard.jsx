@@ -9,7 +9,7 @@ function MovieCard ({ movie }) {
     e.preventDefault()
 
     if (favorite) removeFromFavorites(movie.id)
-    else addToFavorites(movie.id)
+    else addToFavorites(movie)
   }
 
   return (
